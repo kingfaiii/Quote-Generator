@@ -14,7 +14,6 @@
     <!-- Styles -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="preload" href="Morton-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
     <title>Image Generator</title>
 </head>
 <body class="bg-dark">
@@ -56,7 +55,7 @@
 
                        <div id="canvas" class="mx-auto">
                             <div class="container">
-                                <div class="row justify-content-center">
+                                <div class="row my-auto justify-content-center">
                                     <div class="col-md-12">
                                         <p class="text-center" id="InnerText">
                                         </p>
@@ -66,7 +65,6 @@
                                         </div>
                                     </div>
                                     </div>
-                                  
                                 </div>
                             </div>
                        </div>
@@ -83,7 +81,7 @@
         </div>
     </div>
 <script>
-    var canvas = document.getElementById('canvas')
+    var extra_canvas = document.getElementById('canvas')
     var textInnerCanvas = document.getElementById('InnerText')
     var textText = document.getElementById('canvasText')
     var bgPurple = document.getElementById('btnPurple')
@@ -93,33 +91,33 @@
     var logoImage = document.getElementById('imageLogo')
     
     function purple(){
-        canvas.style.backgroundImage = "url('./assets/images/SG-quote-purple.png')";
-        canvas.style.backgroundRepeat = "no-repeat";
-        canvas.style.backgroundSize = "contain";
+        extra_canvas.style.backgroundImage = "url('./assets/images/SG-quote-purple.png')";
+        extra_canvas.style.backgroundRepeat = "no-repeat";
+        extra_canvas.style.backgroundSize = "contain";
         textInnerCanvas.style.color="white";
         logoImage.src="./assets/images/SG-logo.png";
 
     }
     function orange(){
-        canvas.style.backgroundImage = "url('./assets/images/SG-quote-orange.png')";
-        canvas.style.backgroundRepeat = "no-repeat";
-        canvas.style.backgroundSize = "contain";
+        extra_canvas.style.backgroundImage = "url('./assets/images/SG-quote-orange.png')";
+        extra_canvas.style.backgroundRepeat = "no-repeat";
+        extra_canvas.style.backgroundSize = "contain";
         textInnerCanvas.style.color="white";
         logoImage.src="./assets/images/SG-logo.png";
 
     }
     function green(){
-        canvas.style.backgroundImage = "url('./assets/images/SG-quote-green.png')";
-        canvas.style.backgroundRepeat = "no-repeat";
-        canvas.style.backgroundSize = "contain";
+        extra_canvas.style.backgroundImage = "url('./assets/images/SG-quote-green.png')";
+        extra_canvas.style.backgroundRepeat = "no-repeat";
+        extra_canvas.style.backgroundSize = "contain";
         textInnerCanvas.style.color="black";
         logoImage.src="./assets/images/logo-black.png";
 
     }
     function blue(){
-        canvas.style.backgroundImage = "url('./assets/images/SG-quote-blue.png')";
-        canvas.style.backgroundRepeat = "no-repeat";
-        canvas.style.backgroundSize = "contain";
+        extra_canvas.style.backgroundImage = "url('./assets/images/SG-quote-blue.png')";
+        extra_canvas.style.backgroundRepeat = "no-repeat";
+        extra_canvas.style.backgroundSize = "contain";
         textInnerCanvas.style.color="white";
         logoImage.src="./assets/images/SG-logo.png";
 
@@ -131,20 +129,31 @@
         var text = textText.value
         text = text.replace(/\r?\n/g, '<br />');
         textInnerCanvas.innerHTML = text.toUpperCase();
-        textInnerCanvas.style.marginTop = "-80.67%";
+        textInnerCanvas.style.marginTop = "-60%";
         
     }
     );
     function doCapture() {
-    html2canvas(canvas).then(function (canvas) {
+    html2canvas(extra_canvas,{
+        width: 1080,
+        height: 1080
+    }).then(function (canvas) {
+      
         var a = document.createElement('a');
+        var img = new Image();
+        img.src = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+      
+
+        
         // toDataURL defaults to png, so we need to request a jpeg, then convert for file download.
-        a.href = canvas.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+        a.href = img.src;
+       
         a.download = 'Quotes.jpg';
+      
         a.click();
+        
     });
 }
-
 </script>
 </body>
 </html>

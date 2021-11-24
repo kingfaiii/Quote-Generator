@@ -4,20 +4,25 @@
 }
 
 #canvas {
-  width: 70%;
-  padding: 100px 30px;
-  height: 0;
-  padding-top: 66.64%; /* (img-height / img-width * container-width) */
+  width: 1080px;
+  padding: 100px 0 100px 0;
+  /* display: block; */
+  height: 1080px;
+  /* border: 1px solid black; */
+  padding-top: 90.66%; /* (img-height / img-width * container-width) */
   /* (853 / 1280 * 100) */
 }
 #imageLogo {
   width: 382px;
-  height: 100px;
-  padding-top: 30px;
-  transform: scale(0.5);
+  height: 67px;
+  /* padding-top: 0px; */
+  margin-top: 20px;
+  transform: scale(1);
 }
 #InnerText {
   font-family: "Morton";
+  line-height: 0.8;
   font-weight: bold;
-  font-size: 60px;
+  /* padding-right: 20px; */
+  font-size: 75px;
 }
